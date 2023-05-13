@@ -1,4 +1,3 @@
-
 pipeline {
     agent any 
     tools {
@@ -17,7 +16,7 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                    echo "building image"
+                    echo "building the docker image"
                     withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'PASS', usernameVariable: 'USER')])
                         sh 'docker build -t bukkysven/jenkins-test:demo-apache .'
                         sh "echo $PASS | docker login -u $USER --password-stdin"
