@@ -13,6 +13,11 @@ pipeline {
                 }
             }
         }
+        stage('Check Path') {
+            steps {
+                sh 'echo $PATH'
+            }
+        }
         stage("build image") {
             steps {
                 script {
