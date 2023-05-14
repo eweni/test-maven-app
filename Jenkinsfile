@@ -1,7 +1,11 @@
 pipeline {
-    agent any 
+    agent any
+    environment {
+    PATH = "$PATH:/usr/local/bin/docker"
+}
+
     tools {
-        maven 'mavin-3.9'
+        maven 'maven-3.9'
     }
     stages {
         
