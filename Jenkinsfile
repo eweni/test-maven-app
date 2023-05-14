@@ -1,13 +1,12 @@
 pipeline {
     agent any 
     environment {
-    PATH = "$PATH:/usr/local/bin/docker"
-}
+        PATH = "$PATH:/usr/local/bin"
+    }
     tools {
         maven 'maven-3.9'
     }
     stages {
-        
         stage("build jar") {
             steps {
                 script {
@@ -29,19 +28,14 @@ pipeline {
                         sh 'docker build -t bukkysven/jenkins-test:demo-apache .'
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh 'docker push bukkysven/jenkins-test:demo-apache' 
-                    }
-                        
-                    
+                    }  
                 }
             }
-
-
         }
         stage("deploy") {
             steps {
                 script {
                     echo "deploying"
-                    
                 }
             }
         }
